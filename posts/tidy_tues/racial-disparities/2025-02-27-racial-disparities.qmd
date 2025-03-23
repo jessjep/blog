@@ -1,0 +1,11 @@
+---
+title: "Tidy Tuesday: Racial Disparities"
+date: 2025-02-27
+image: "race_disparities_plot2.png"
+---
+
+Week 8 of Tidy Tuesday shows some concerning trends from reproductive medicine research findings in the US.
+
+![](race_disparities_plot2.png){style="margin:auto;"}
+
+Code: <https://github.com/jessjep/tidytuesday/blob/main/2025/24-02-25/disparities.R>

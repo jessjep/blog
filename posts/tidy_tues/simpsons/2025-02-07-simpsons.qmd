@@ -1,0 +1,15 @@
+---
+title: "Tidy Tuesday: The Simpsons"
+date: 2025-02-01
+image: "simpsons_tn.svg"
+---
+
+Week 5 of Tidy Tuesday 2025 looks at data from The Simpsons, season 21 onwards. I created the plot using R and edited it using Adobe Illustrator.
+
+![](tt_simpsons.png){style="margin:auto;"}
+
+The colours were chosen to reflect the show. I prefer a darker, less saturated version:
+
+![](tt_simpsons_dark.png){style="margin:auto;"}
+
+Code: [github.com/jessjep/tidytuesday/blob/main/2025/04-02-25/tidy_tues_simpsons/code.R](https://github.com/jessjep/tidytuesday/blob/main/2025/04-02-25/tidy_tues_simpsons/code.R)

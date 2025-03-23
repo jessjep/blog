@@ -1,0 +1,41 @@
+---
+title: "Proportion of Women in Chess"
+date: 2024-10-25
+image: "thumbnail.svg"
+---
+
+I was interested in plotting the proportion of male and female chess players over time. The following plots were created using FIDE player data and therefore only show the trend in players who have an official FIDE standard rating.
+
+|                                                |
+|:----------------------------------------------:|
+| ![Plot of Registered Players](totals_plot.png) |
+
+The number of chess players registered with FIDE has more than tripled since 2012. Female players coninue to make up about one in ten, a proportion that has not changed over the years.
+
+When filtering to only 'active' players -- those who have played in a tournament in the previous 12 months -- the proportion is similar:
+
+|                                                     |
+|:---------------------------------------------------:|
+| ![Active Players by Gender](totals_active_plot.png) |
+
+|                                    |
+|:----------------------------------:|
+| ![Active Players](active_plot.png) |
+
+Looking at these numbers by age group, we can see that around half of female chess players are under the age of 18, compared to around a quarter of males. This is unsurprising, and consistent with the understanding that [girls tend to drop out of chess much sooner than boys](https://www.fide.com/docs/presentations/2022%20FIDE%20Exchange%20Forum%20-%20Smerdon.pdf).
+
+|                                                      |
+|:----------------------------------------------------:|
+| ![Active Players by Gender](proportion_plots_mf.png) |
+
+How has the number of girls participating in chess tournaments changed over the last decade? Well, there has been a small increase, but boys still outnumber them by more than three to one:
+
+|                                                 |
+|:-----------------------------------------------:|
+| ![Active Players by Gender](under_18_plots.png) |
+
+### Recommended reading:
+
+[Gender Differences: The Chess Delusion](https://www.journalofexpertise.org/articles/volume6_issue1/JoE_6_1_Chassy.pdf)
+
+[Checking Gender Bias: Parents and Mentors Perceive Less Chess Potential in Girls](https://www.cns.nyu.edu/malab/static/files/publications/2023_Arnold_Bailey_Ma_Shahade_Cimpian.pdf)

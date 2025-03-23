@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome 👋",
+    "section": "",
+    "text": "I’m developing my skills in data visualisation and analysis. This is a space for me to share my learning and various personal projects, which are mostly submissions to Tidy Tuesday at the moment.\nContact me at: jessicamoore.tn@gmail.com"
+  },
+  {
+    "objectID": "posts/tidy_tues/palmtrees/2025-03-19-palms.html",
+    "href": "posts/tidy_tues/palmtrees/2025-03-19-palms.html",
+    "title": "Tidy Tuesday: Palm Trees",
+    "section": "",
+    "text": "Week 11 of Tidy Tuesday used data from the {palmtrees} package. Such an interesting dataset with so many options to explore.\nI find dendrograms confusing, so I followed this helpful post to help me create it: https://paulapivat.com/technical_notes/example_tech/data_viz_tip1/.\n\n\nCode\n\n\nLoad Data and Libraries\npalmtrees &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-03-18/palmtrees.csv')\n\nlibrary(tidyverse)\nlibrary(igraph)\nlibrary(tidygraph)\nlibrary(ggraph)\nlibrary(ggtext)\nlibrary(sysfonts)\nlibrary(showtext)\n\n\n\n\nWrangle the Data\n# turn the data into a format suitable for dendrograms #\npalms &lt;- palmtrees %&gt;%\n  group_by(palm_subfamily) %&gt;%\n  arrange(palm_subfamily) %&gt;%\n  mutate(level1 = \"palmcenter\",\n         level2 = palm_subfamily,\n         level3 = palm_tribe,\n         level4 = spec_name) %&gt;%\n  ungroup() %&gt;%\n  select(level1:level4)\n\n# create the edges #\npalms_edges_1_2 &lt;- palms %&gt;%\n  select(level1, level2) %&gt;%\n  unique() %&gt;%\n  rename(from = level1, to = level2) %&gt;%\n  mutate(subfam = to) # adding this column for colour grouping\n\npalms_edges_2_3 &lt;- palms %&gt;%\n  select(level2, level3) %&gt;%\n  unique() %&gt;%\n  rename(from = level2, to = level3) %&gt;%\n  mutate(subfam = from) # adding this column for colour grouping\n\npalms_edges_3_4 &lt;- palms %&gt;%\n  select(level2, level3, level4) %&gt;%\n  unique() %&gt;%\n  rename(from = level3, to = level4) %&gt;%\n  mutate(subfam = level2) %&gt;% # adding this column for colour grouping\n  select(-level2) \n\nedge_list &lt;- rbind(palms_edges_1_2, palms_edges_2_3, palms_edges_3_4)\n\npalms_plot &lt;- graph_from_data_frame(edge_list) %&gt;%\n  as_tbl_graph()\n\n\n\n\nDefine Fonts, Text, and Colours\nfont_add_google(\"Milonga\", \"milonga\")\nfont_add_google(\"Kurale\", \"kurale\")\nft &lt;- \"milonga\"\nft2 &lt;- \"kurale\"\nshowtext_auto()\n\ntitle &lt;- \"Palm Trees\"\nsubtitle &lt;- \"Over 2,500 species of palms exist worldwide, categorized into 29 tribes across\n5 subfamilies: &lt;span style = 'color: #04724d;'&gt;**Arecoideae**&lt;/span&gt;, &lt;span style = 'color: #74a57f;'&gt;**Calamoideae**&lt;/span&gt;, &lt;span style = 'color: #06AD81;'&gt;**Ceroxyloideae**&lt;/span&gt;, &lt;span style = 'color: #4c934c;'&gt;**Coryphoideae**&lt;/span&gt;, and &lt;span style = 'color: #b7ce63;'&gt;**Nypoideae**&lt;/span&gt;.\\n\nIn this diagram, the leaves are made up of thousands of lines, each representing a species of palm.\nEach leaf represents a palm tribe, and each colour a subfamily.\"\ncaption &lt;- \"Created by: jessimoore.bsky.social   Source: {palmtrees}\"\n\nc &lt;- c(\"#04724d\", \"#74a57f\", \"#06AD81\",\n       \"#4c934c\", \"#b7ce63\")\n\n\n\n\nCreate the Plot\npalmtree &lt;- ggraph(palms_plot, layout = \"dendrogram\", circular = TRUE) +\n  geom_edge_arc(aes(width = after_stat(index), edge_colour = subfam)) +\n  scale_edge_color_manual(values = c) +\n  scale_edge_width(range = c(1,0.2)) +\n  theme_void() +\n  labs(title = title, subtitle = subtitle, caption = caption) +\n  theme(panel.background = element_rect(fill = \"#d7fff1\", color = NA),\n        plot.background = element_rect(fill = \"#d7fff1\", color = NA),\n        plot.title = element_text(family = ft, size = 34, hjust = 0.5),\n        plot.subtitle = element_textbox_simple(family = ft2, size = 10, \n                                               hjust = 0.5, halign = 0.5,\n                                               margin = margin(15,0,0,0)),\n        plot.caption = element_text(family = ft2, size = 8, hjust = 0.5),\n        plot.caption.position = \"plot\",\n        legend.position = \"none\",\n        plot.margin = margin(20,20,20,20))"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Jessica Moore",
+    "section": "",
+    "text": "Tidy Tuesday: Palm Trees\n\n\n\nMar 19, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Pixar Films\n\n\n\nMar 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Long Beach Animal Rescue\n\n\n\nFeb 27, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Racial Disparities\n\n\n\nFeb 27, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: FBI Crime Data API\n\n\n\nFeb 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTableau Chess Dashboard\n\n\n\nFeb 19, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: CDC Datasets\n\n\n\nFeb 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: The Simpsons\n\n\n\nFeb 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Water Insecurity\n\n\n\nFeb 1, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoodreads Genres\n\n\n\nJan 8, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nChess Federations\n\n\n\nNov 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion of Women in Chess\n\n\n\nOct 25, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/chess1/2024-10-25-chess1.html",
+    "href": "posts/chess1/2024-10-25-chess1.html",
+    "title": "Proportion of Women in Chess",
+    "section": "",
+    "text": "I was interested in plotting the proportion of male and female chess players over time. The following plots were created using FIDE player data and therefore only show the trend in players who have an official FIDE standard rating.\n\n\n\n\n\n\n\nThe number of chess players registered with FIDE has more than tripled since 2012. Female players coninue to make up about one in ten, a proportion that has not changed over the years.\nWhen filtering to only ‘active’ players – those who have played in a tournament in the previous 12 months – the proportion is similar:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLooking at these numbers by age group, we can see that around half of female chess players are under the age of 18, compared to around a quarter of males. This is unsurprising, and consistent with the understanding that girls tend to drop out of chess much sooner than boys.\n\n\n\n\n\n\n\nHow has the number of girls participating in chess tournaments changed over the last decade? Well, there has been a small increase, but boys still outnumber them by more than three to one:\n\n\n\n\n\n\n\n\nRecommended reading:\nGender Differences: The Chess Delusion\nChecking Gender Bias: Parents and Mentors Perceive Less Chess Potential in Girls"
+  },
+  {
+    "objectID": "posts/tidy_tues/water-insecurity/2025-02-01-water-insecurity.html",
+    "href": "posts/tidy_tues/water-insecurity/2025-02-01-water-insecurity.html",
+    "title": "Tidy Tuesday: Water Insecurity",
+    "section": "",
+    "text": "My submission for week 4 of Tidy Tuesday, 2025 - an enhanced dumbbell plot. My code for the initial plot, created in R, is detailed below the image.\n\nR Code: \n\n# load packages:\n\nlibrary(forcats)\nlibrary(dplyr)\n\n# load the data:\n\ntuesdata &lt;- tidytuesdayR::tt_load(2025, week = 4)\n\nwater_insecurity_2022 &lt;- tuesdata$water_insecurity_2022\nwater_insecurity_2023 &lt;- tuesdata$water_insecurity_2023\n\n# organise the data:\n\nwater_ins_22 &lt;- water_insecurity_2022 %&gt;% \n  separate_wider_delim(name, \", \", names = c(\"county\", \"state\")) %&gt;% \n  group_by(state) %&gt;% \n  summarise(avg_pct = mean(percent_lacking_plumbing), \n            people_lacking_plumbing = sum(plumbing)) %&gt;% \n  mutate(year = 2022)\n\nwater_ins_23 &lt;- water_insecurity_2023 %&gt;%\n  separate_wider_delim(name, \", \", names = c(\"county\", \"state\")) %&gt;% \n  group_by(state) %&gt;% \n  summarise(avg_pct = mean(percent_lacking_plumbing), \n            people_lacking_plumbing = sum(plumbing)) %&gt;% \n  mutate(year = 2023)\n\nwater_ins &lt;- bind_rows(water_ins_22, water_ins_23) %&gt;% \n  group_by(state) %&gt;% \n  mutate(pct_diff = avg_pct[year==2022] - avg_pct[year==2023]) %&gt;% \n  drop_na() %&gt;% \n  mutate(gradient = sqrt(avg_pct)) \n\nsegment &lt;- water_ins %&gt;% # used to create the segments on the plot \n  select(state, avg_pct, year) %&gt;% \n  pivot_wider(names_from = year, values_from = avg_pct) %&gt;% \n  rename(avg_pct_22 = \"2022\", \n         avg_pct_23 = \"2023\")\n\n\n# create the plot:\n\np &lt;- ggplot() + \\\\\n  geom_segment(data = segment,\n               aes(x = state, y = avg_pct_22,\n                   yend = avg_pct_23, color = avg_pct_23),\n               alpha = 0.8, size = 0.6) +\n  geom_point(data = water_ins %&gt;% filter(year == 2023),\n             aes(y = avg_pct, x = fct_reorder(state, pct_diff),\n                 color = gradient,\n                 size = people_lacking_plumbing,\n                 ), shape = 17, alpha = 0.6) +\n  geom_point(data = water_ins %&gt;% filter(year == 2022),\n             aes(y = avg_pct, x = fct_reorder(state, pct_diff),\n                 color = gradient,\n                 size = people_lacking_plumbing),\n             alpha = 0.6) +\n  scale_color_gradient2(low = \"#3f88c5\",\n                        mid = \"#edae49\",\n                        high = \"#d1495b\",\n                        midpoint = 0.5) +\n  scale_y_sqrt() +\n  guides(alpha = \"none\") +\n  coord_flip() +\n  labs(y = \"% of Population Lacking Plumbing Facilities\",\n       x = NULL,\n       size = \"Population Lacking \\n Plumbing Facilities\",\n       title = \"Water Insecurity in the United States\") +\n  theme_light() + \\\\\n  theme(legend.position = \"bottom\")\np\n\n# from here, I edited the plot in Illustrator."
+  },
+  {
+    "objectID": "posts/tidy_tues/racial-disparities/2025-02-27-racial-disparities.html",
+    "href": "posts/tidy_tues/racial-disparities/2025-02-27-racial-disparities.html",
+    "title": "Tidy Tuesday: Racial Disparities",
+    "section": "",
+    "text": "Week 8 of Tidy Tuesday shows some concerning trends from reproductive medicine research findings in the US.\n\nCode: https://github.com/jessjep/tidytuesday/blob/main/2025/24-02-25/disparities.R"
+  },
+  {
+    "objectID": "posts/tidy_tues/long-beach/2025-03-04-long-beach.html",
+    "href": "posts/tidy_tues/long-beach/2025-03-04-long-beach.html",
+    "title": "Tidy Tuesday: Long Beach Animal Rescue",
+    "section": "",
+    "text": "Code: https://github.com/jessjep/tidytuesday/blob/main/2025/03-03-25/surrenders2.R"
+  },
+  {
+    "objectID": "posts/tidy_tues/fbi-crime-api/2025-02-20-fbi_crime_api.html",
+    "href": "posts/tidy_tues/fbi-crime-api/2025-02-20-fbi_crime_api.html",
+    "title": "Tidy Tuesday: FBI Crime Data API",
+    "section": "",
+    "text": "Week 7 of Tidy Tuesday 2025 looks at data from the FBI Crime API. The following plot visualises the dates when crime agencies around the USA adopted the National Incident-Based Reporting System, which collects crime data in much greater detail than the original Summary Reporting System (SRS).\n\nCode: https://github.com/jessjep/tidytuesday/blob/main/2025/18-02-25/fbi_crime_data/nibrs_start_date.R"
+  },
+  {
+    "objectID": "posts/tidy_tues/pixar/2025-03-16-pixar.html",
+    "href": "posts/tidy_tues/pixar/2025-03-16-pixar.html",
+    "title": "Tidy Tuesday: Pixar Films",
+    "section": "",
+    "text": "Week 10 of Tidy Tuesday used data from the {pixar} package. There were some incorrect run times so my initial plot was a little off. This is the updated version.\nCould be fun to revisit this one and add some more playful elements in Illustrator—like using balloons with string for the segments and points.\n\nCode: https://github.com/jessjep/tidytuesday/blob/main/2025/11-03-25/pixar.R"
+  },
+  {
+    "objectID": "posts/tidy_tues/cdc-datasets/2025-02-11-cdc-datasets.html",
+    "href": "posts/tidy_tues/cdc-datasets/2025-02-11-cdc-datasets.html",
+    "title": "Tidy Tuesday: CDC Datasets",
+    "section": "",
+    "text": "Week 6 of Tidy Tuesday 2025 looks at CDC datasets that have been backed up on archive.org during the Trump administration purge. I made an effort to edit the visuals of this one using R alone, without relying on Illustrator to fix font and alignment issues.\n\nCode: https://github.com/jessjep/tidytuesday/blob/main/2025/11-02-25/tt_cdc/treemap2.R"
+  },
+  {
+    "objectID": "posts/tidy_tues/simpsons/2025-02-07-simpsons.html",
+    "href": "posts/tidy_tues/simpsons/2025-02-07-simpsons.html",
+    "title": "Tidy Tuesday: The Simpsons",
+    "section": "",
+    "text": "Week 5 of Tidy Tuesday 2025 looks at data from The Simpsons, season 21 onwards. I created the plot using R and edited it using Adobe Illustrator.\n\nThe colours were chosen to reflect the show. I prefer a darker, less saturated version:\n\nCode: github.com/jessjep/tidytuesday/blob/main/2025/04-02-25/tidy_tues_simpsons/code.R"
+  },
+  {
+    "objectID": "posts/Chess Federations/chess-feds.html",
+    "href": "posts/Chess Federations/chess-feds.html",
+    "title": "Chess Federations",
+    "section": "",
+    "text": "I created this graphic as my final project for the Domestika course “Creative Data Visualization for Narrative Designs” by Federica Fragapane. I created bubble plots and violin plots in R, which I combined and edited for the final visualisation using Inkscape."
+  },
+  {
+    "objectID": "posts/tableau-chess/2025-02-19-tableau-chess.html",
+    "href": "posts/tableau-chess/2025-02-19-tableau-chess.html",
+    "title": "Tableau Chess Dashboard",
+    "section": "",
+    "text": "One of my first finished Tableau visualisations can be viewed here (best viewed on a large screen). I am finding the FIDE chess player data to be a really great source for data exploration, so I looked at another (more traditional) way to visualise the chess federations - as opposed to my creative visualisation here.\nI wanted to do a lot more with this; specifically, I wanted to animate it by date to show the change over time. This was easy enough to achieve, however, achieving the dynamic sorting (from most to least, changing by year) of the bar charts was not so easy, and something I’ll have to play around with a little more."
+  }
+]

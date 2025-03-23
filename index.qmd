@@ -1,0 +1,16 @@
+---
+title: "Welcome 👋"
+about:
+  template: jolla
+  links:
+    - icon: bootstrap-fill
+      text: Bluesky
+      href: https://bsky.app/profile/jessimoore.bsky.social
+    - icon: github
+      text: Github
+      href: https://github.com/jessjep
+---
+
+I'm developing my skills in data visualisation and analysis. This is a space for me to share my learning and various personal projects, which are mostly submissions to [Tidy Tuesday](https://github.com/rfordatascience/tidytuesday?tab=readme-ov-file) at the moment.
+
+Contact me at: jessicamoore.tn\@gmail.com

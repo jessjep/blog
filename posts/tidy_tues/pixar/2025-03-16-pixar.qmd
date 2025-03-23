@@ -1,0 +1,13 @@
+---
+title: "Tidy Tuesday: Pixar Films"
+date: 2025-03-16
+image: "pixar_2.png"
+---
+
+Week 10 of Tidy Tuesday used data from the {pixar} package. There were some incorrect run times so my initial plot was a little off. This is the updated version.
+
+Could be fun to revisit this one and add some more playful elements in Illustrator—like using balloons with string for the segments and points.
+
+![](pixar_2.png){style="margin:auto;"}
+
+Code: <https://github.com/jessjep/tidytuesday/blob/main/2025/11-03-25/pixar.R>

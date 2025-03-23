@@ -1,0 +1,20 @@
+project:
+  type: website
+
+website:
+    title: "Jessica Moore"
+    navbar:
+      tools:
+      - icon: flower1
+        href: blog.qmd
+      - icon: github
+        href: https://github.com/jessjep
+      - icon: bootstrap-fill
+        href: https://bsky.app/profile/jessimoore.bsky.social
+format:
+  html:
+    theme: minty
+    css: styles.css
+
+editor: visual
+
