@@ -5,11 +5,14 @@ project:
 website:
     title: "Jessica Moore"
     navbar:
-      tools:
-      - icon: flower1
+      right:
+      - text: "Posts"
+        icon: flower1
         href: blog.qmd
-      - icon: github
+      - text: "Github"
+        icon: github
         href: https://github.com/jessjep
+      - text: "Bluesky"
       - icon: bootstrap-fill
         href: https://bsky.app/profile/jessimoore.bsky.social
 format:
