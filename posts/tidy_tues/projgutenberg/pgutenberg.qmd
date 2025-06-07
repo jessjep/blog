@@ -17,8 +17,9 @@ I used the Wall Street Journal theme from {ggthemes} and the Manu::Kereru palett
 ![](p3.png)
 
 ```{r}
-#|code-fold: true
-#|code-summary: Code
+#| code-fold: true
+#| code-summary: Code
+
 library(tidyverse)
 library(ggthemes)
 library(paletteer)
