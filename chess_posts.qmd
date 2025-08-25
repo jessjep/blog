@@ -1,0 +1,13 @@
+---
+title: "Chess Posts"
+listing:
+  contents: posts/chess_posts/**/*.qmd
+  sort: "date desc"
+  type: grid
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [image, title]
+page-layout: full
+title-block-banner: false
+---

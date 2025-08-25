@@ -13,13 +13,44 @@
       "/posts/tidy_tues/long-beach/2025-03-04-long-beach.html",
       "/posts/tidy_tues/racial-disparities/2025-02-27-racial-disparities.html",
       "/posts/tidy_tues/fbi-crime-api/2025-02-20-fbi_crime_api.html",
-      "/posts/tableau-chess/2025-02-19-tableau-chess.html",
+      "/posts/chess_posts/tableau-chess/chess_tableau.html",
       "/posts/tidy_tues/cdc-datasets/2025-02-11-cdc-datasets.html",
       "/posts/tidy_tues/simpsons/2025-02-07-simpsons.html",
       "/posts/tidy_tues/water-insecurity/2025-02-01-water-insecurity.html",
       "/posts/goodreads-genres/2025-01-08-goodreads-genres.html",
-      "/posts/Chess Federations/chess-feds.html",
-      "/posts/chess1/2024-10-25-chess1.html"
+      "/posts/chess_posts/Chess Federations/chess-feds.html",
+      "/posts/chess_posts/chess1/2024-10-25-chess1.html"
+    ]
+  },
+  {
+    "listing": "/posts/tidy_tues/tidy_tues.html",
+    "items": []
+  },
+  {
+    "listing": "/tidy_tues.html",
+    "items": [
+      "/posts/tidy_tues/munros/munros.html",
+      "/posts/tidy_tues/projgutenberg/pgutenberg.html",
+      "/posts/tidy_tues/dnd-monsters/monsters.html",
+      "/posts/tidy_tues/420/420.html",
+      "/posts/tidy_tues/pokemon/pokemon.html",
+      "/posts/tidy_tues/amazon/amazon.html",
+      "/posts/tidy_tues/palmtrees/2025-03-19-palms.html",
+      "/posts/tidy_tues/pixar/2025-03-16-pixar.html",
+      "/posts/tidy_tues/long-beach/2025-03-04-long-beach.html",
+      "/posts/tidy_tues/racial-disparities/2025-02-27-racial-disparities.html",
+      "/posts/tidy_tues/fbi-crime-api/2025-02-20-fbi_crime_api.html",
+      "/posts/tidy_tues/cdc-datasets/2025-02-11-cdc-datasets.html",
+      "/posts/tidy_tues/simpsons/2025-02-07-simpsons.html",
+      "/posts/tidy_tues/water-insecurity/2025-02-01-water-insecurity.html"
+    ]
+  },
+  {
+    "listing": "/chess_posts.html",
+    "items": [
+      "/posts/chess_posts/tableau-chess/chess_tableau.html",
+      "/posts/chess_posts/Chess Federations/chess-feds.html",
+      "/posts/chess_posts/chess1/2024-10-25-chess1.html"
     ]
   }
 ]

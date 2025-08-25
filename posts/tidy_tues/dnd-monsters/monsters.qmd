@@ -5,7 +5,7 @@ execute:
   echo: true
   warning: false
   message: false
-image: "monsters.png"
+image: "monsters_v2.png"
 tags: 
   - tidytuesday
 ---

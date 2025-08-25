@@ -1,0 +1,13 @@
+---
+title: "Tidy Tuesday Posts"
+listing:
+  contents: posts/tidy_tues/**/*.qmd
+  sort: "date desc"
+  type: grid
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [image, title]
+page-layout: full
+title-block-banner: false
+---

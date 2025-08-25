@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Jessica Moore",
     "section": "",
-    "text": "No matching items"
+    "text": "Tidy Tuesday: Scotland’s Munros\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Project Gutenberg\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: D&D Monsters\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: 420 Data\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Pokemon\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Amazon’s Annual Reports\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Palm Trees\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Pixar Films\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Long Beach Animal Rescue\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Racial Disparities\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: FBI Crime Data API\n\n\n\n\n\n\n\n\n\n\n\n\n\nTableau Chess Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: CDC Datasets\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: The Simpsons\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Water Insecurity\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoodreads Genres\n\n\n\n\n\n\n\n\n\n\n\n\n\nChess Federations\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion of Women in Chess\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/tableau-chess/2025-02-19-tableau-chess.html",
@@ -95,7 +95,7 @@
     "href": "index.html",
     "title": "Welcome 👋",
     "section": "",
-    "text": "I’m developing my skills in data visualisation and analysis. This is a space for me to share my learning and various personal projects, which are mostly submissions to Tidy Tuesday at the moment.\nContact me at: jessicamoore.tn@gmail.com"
+    "text": "I’m developing my skills in data visualisation and analysis. This is a platform for me to share my various personal projects all in one place.\nContact me at: jessicamoore.tn@gmail.com\n\n\n\n\n\n\nLatest post\n\n\n\n\n\n\n\n\n\nTidy Tuesday posts\n\n\n\n\n\n\n\n\n\nChess posts"
   },
   {
     "objectID": "posts/tidy_tues/amazon/amazon.html",
@@ -138,5 +138,75 @@
     "title": "Tidy Tuesday: Scotland’s Munros",
     "section": "",
     "text": "For this week’s Tidy Tuesday, I explored whether there are differences in Munro classification and height distribution depending on how they are named.\nAt this point I do feel a bit like a fraud in calling my submissions ‘tidy’ as the code certainly is not. Although I am working on tidying up my charts, so maybe it still counts.\n\n\n\nCode\ntuesdata &lt;- tidytuesdayR::tt_load(2025, week = 33)\n\nscottish_munros &lt;- tuesdata$scottish_munros\n\nlibrary(tidyverse)\nlibrary(ggridges)\nlibrary(patchwork)\n\nmunros &lt;- scottish_munros %&gt;%\n  mutate(Type = case_when(\n    str_detect(Name, \"Stob\") ~ \"Stob\",\n    str_detect(Name, \"Meall|Mheall|Mill|Mhill\") ~ \"Meall\",\n    str_detect(Name, \"Sgurr|Sgorr|Sgor\") ~ \"Sgùrr\",\n    str_detect(Name, \"Carn|Cairn|Chairn|Chuirn\") ~ \"Càrn\",\n    str_detect(Name, \"Ben|Beinn|Bheinn\") ~ \"Beinn\"),\n    Type = factor(Type, levels = c(\"Meall\", \"Creag\", \"Sgùrr\", \"Beinn\", \"Càrn\", \"Stob\"))\n    ) %&gt;%\n  drop_na(Type) %&gt;%\n  group_by(Type)\n\nmeans &lt;- munros %&gt;%\n  summarise(height = mean(Height_m),\n            number = n())\n\nbg &lt;- \"#efe5dc\"\np &lt;- ggplot(munros, aes(Height_m, Type, fill = Type)) +\n  geom_density_ridges(scale = 1.5, rel_min_height = 0.005,\n                      quantile_lines = TRUE, quantile_fun = mean,\n                      vline_linetype = \"dashed\",\n                      aes(color = \"Mean height (m)\")) +\n  scale_y_discrete(expand = c(0.01, 0)) +\n  scale_x_continuous(expand = c(0.01, 0)) +\n  scale_color_manual(name = NULL, values = c(\"Mean height (m)\" = \"black\")) +\n  scale_fill_brewer(palette = 9) +\n  labs(x = \"Height (m)\", y = NULL) +\n  guides(fill = \"none\",\n         color = guide_legend(override.aes=list(fill=bg))) +\n  theme(legend.key.width = unit(0.5, \"cm\"),\n        legend.key.height = unit(1, \"cm\"),\n        legend.position = \"inside\",\n        legend.position.inside = c(0.8,0.09))\n\n# combination\n\nmunros_long &lt;- munros %&gt;%\n  pivot_longer(7:17, names_to = \"Year\", values_to = \"Classification\") %&gt;%\n  mutate(Year = as.integer(Year)) %&gt;%\n  drop_na(Classification)\n\np3 &lt;- ggplot(filter(munros_long, Year == 2021)) +\n  geom_bar(aes(x = Type, fill = Classification), colour = \"black\",\n           width = 0.5) +\n  labs(x = NULL, y = \"Number\") +\n  scale_fill_manual(values = tidyplots::colors_discrete_friendly_long) +\n  theme(axis.text.y = element_blank(),\n        legend.position = \"inside\",\n        legend.position.inside = c(0.85,0.8)) +\n  coord_flip()\n\ncombined_plot &lt;- p + p3 & theme(plot.margin = margin(40,10,10,10),\n                                plot.background = element_rect(fill = bg, color = bg),\n                                panel.background = element_rect(fill = bg, color = bg),\n                                legend.background = element_rect(fill = bg, color = bg),\n                                panel.grid = element_blank(),\n                                axis.ticks = element_blank(),\n                                axis.text = element_text(size = 12),\n                                axis.title.x = element_text(size = 14, hjust = 1),\n                                plot.title = element_text(face = \"bold\", size = 16, hjust = 0, vjust = 5),\n                                plot.title.position = \"plot\") &\n  plot_annotation(title = \"Scotland's Munros and Munro Tops\",\n                  subtitle = glue::glue(\"A Munro is a Scottish mountain and a Munro Top is a subsidiary summit of a Munro not considered a distinct mountain in its own right.\n                  The charts below show the height distributions (in metres) and the number of Munros and Munro Tops by commonly used Gaelic names.\n                  The most common name used to describe a Munro is Beinn (or Ben), meaning 'mountain' or 'peak'.\"),\n                  caption = \"Created by jessimoore@bsky.social for #TidyTuesday. Source: The Database of British and Irish Hills v18.2, www.hills-database.co.uk\")"
+  },
+  {
+    "objectID": "posts/tidy_tues/tidy_tues.html",
+    "href": "posts/tidy_tues/tidy_tues.html",
+    "title": "Tidy Tuesday Posts",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Welcome 👋",
+    "section": "Education",
+    "text": "Education\nUniversity of California, San Diego | San Diego, CA PhD in Mathematics | Sept 2011 - June 2015\nMacalester College | St. Paul, MN B.A in Economics | Sept 2007 - June 2011"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Welcome 👋",
+    "section": "Experience",
+    "text": "Experience\nWengo Analytics | Head Data Scientist | April 2018 - present\nGeoScynce | Chief Analyst | Sept 2012 - April 2018"
+  },
+  {
+    "objectID": "index.html#tidy-tuesday",
+    "href": "index.html#tidy-tuesday",
+    "title": "Welcome 👋",
+    "section": "Tidy Tuesday",
+    "text": "Tidy Tuesday\n\n\nHello and welcome!\n\n\n\n\n\nAbout me, my interests and experience, and my work as a Research Software Engineer.\n\n\nABOUT"
+  },
+  {
+    "objectID": "tidy_tues.html",
+    "href": "tidy_tues.html",
+    "title": "Tidy Tuesday Posts",
+    "section": "",
+    "text": "Tidy Tuesday: Scotland’s Munros\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Project Gutenberg\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: D&D Monsters\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: 420 Data\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Pokemon\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Amazon’s Annual Reports\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Palm Trees\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Pixar Films\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Long Beach Animal Rescue\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Racial Disparities\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: FBI Crime Data API\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: CDC Datasets\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: The Simpsons\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday: Water Insecurity\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/chess_posts/chess1/2024-10-25-chess1.html",
+    "href": "posts/chess_posts/chess1/2024-10-25-chess1.html",
+    "title": "Proportion of Women in Chess",
+    "section": "",
+    "text": "I was interested in plotting the proportion of male and female chess players over time. The following plots were created using FIDE player data and therefore only show the trend in players who have an official FIDE standard rating.\n\n\n\n\n\n\n\nThe number of chess players registered with FIDE has more than tripled since 2012. Female players coninue to make up about one in ten, a proportion that has not changed over the years.\nWhen filtering to only ‘active’ players – those who have played in a tournament in the previous 12 months – the proportion is similar:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLooking at these numbers by age group, we can see that around half of female chess players are under the age of 18, compared to around a quarter of males. This is unsurprising, and consistent with the understanding that girls tend to drop out of chess much sooner than boys.\n\n\n\n\n\n\n\nHow has the number of girls participating in chess tournaments changed over the last decade? Well, there has been a small increase, but boys still outnumber them by more than three to one:\n\n\n\n\n\n\n\n\nRecommended reading:\nGender Differences: The Chess Delusion\nChecking Gender Bias: Parents and Mentors Perceive Less Chess Potential in Girls"
+  },
+  {
+    "objectID": "posts/chess_posts/Chess Federations/chess-feds.html",
+    "href": "posts/chess_posts/Chess Federations/chess-feds.html",
+    "title": "Chess Federations",
+    "section": "",
+    "text": "I created this graphic as my final project for the Domestika course “Creative Data Visualization for Narrative Designs” by Federica Fragapane. I created bubble plots and violin plots in R, which I combined and edited for the final visualisation using Inkscape."
+  },
+  {
+    "objectID": "posts/chess_posts/tableau-chess/2025-02-19-tableau-chess.html",
+    "href": "posts/chess_posts/tableau-chess/2025-02-19-tableau-chess.html",
+    "title": "Tableau Chess Dashboard",
+    "section": "",
+    "text": "One of my first finished Tableau visualisations can be viewed here (best viewed on a large screen). I am finding the FIDE chess player data to be a really great source for data exploration, so I looked at another (more traditional) way to visualise the chess federations - as opposed to my creative visualisation here.\nI wanted to do a lot more with this; specifically, I wanted to animate it by date to show the change over time. This was easy enough to achieve, however, achieving the dynamic sorting (from most to least, changing by year) of the bar charts was not so easy, and something I’ll have to play around with a little more."
+  },
+  {
+    "objectID": "chess_posts.html",
+    "href": "chess_posts.html",
+    "title": "Chess Posts",
+    "section": "",
+    "text": "Tableau Chess Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\nChess Federations\n\n\n\n\n\n\n\n\n\n\n\n\n\nProportion of Women in Chess\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/chess_posts/tableau-chess/chess_tableau.html",
+    "href": "posts/chess_posts/tableau-chess/chess_tableau.html",
+    "title": "Tableau Chess Dashboard",
+    "section": "",
+    "text": "One of my first finished Tableau visualisations can be viewed here (best viewed on a large screen). I am finding the FIDE chess player data to be a really great source for data exploration, so I looked at another (more traditional) way to visualise the chess federations - as opposed to my creative visualisation here.\nI wanted to do a lot more with this; specifically, I wanted to animate it by date to show the change over time. This was easy enough to achieve, however, achieving the dynamic sorting (from most to least, changing by year) of the bar charts was not so easy, and something I’ll have to play around with a little more."
   }
 ]

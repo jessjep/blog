@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
@@ -201,6 +201,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/munros/munros.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: Scotland’s Munros
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -210,15 +215,25 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/projgutenberg/p3.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: Project Gutenberg
+</h5>
+</div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1748268000000" data-listing-file-modified-sort="1749004891619" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1132">
+<div class="g-col-1" data-index="2" data-listing-date-sort="1748268000000" data-listing-file-modified-sort="1756099663768" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1132">
 <a href="./posts/tidy_tues/dnd-monsters/monsters.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./posts/tidy_tues/dnd-monsters/monsters.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./posts/tidy_tues/dnd-monsters/monsters_v2.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: D&amp;D Monsters
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -228,6 +243,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/420/fatalities.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: 420 Data
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -237,6 +257,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/pokemon/ordered_plot.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: Pokemon
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -246,6 +271,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/amazon/amazon.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: Amazon’s Annual Reports
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -255,6 +285,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/palmtrees/palms.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: Palm Trees
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -264,6 +299,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/pixar/pixar_2.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: Pixar Films
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -273,6 +313,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/long-beach/surrenders_plot.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: Long Beach Animal Rescue
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -282,6 +327,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/racial-disparities/race_disparities_plot2.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: Racial Disparities
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -291,15 +341,25 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/fbi-crime-api/agency_adoption_map.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: FBI Crime Data API
+</h5>
+</div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="11" data-listing-date-sort="1739883600000" data-listing-file-modified-sort="1742697703135" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="355">
-<a href="./posts/tableau-chess/2025-02-19-tableau-chess.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="11" data-listing-date-sort="1739883600000" data-listing-file-modified-sort="1756102234189" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="114">
+<a href="./posts/chess_posts/tableau-chess/chess_tableau.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./posts/tableau-chess/chess_viz.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./posts/chess_posts/tableau-chess/chess_viz.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tableau Chess Dashboard
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -309,6 +369,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/cdc-datasets/treemap_tn.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: CDC Datasets
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -318,6 +383,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/simpsons/simpsons_tn.svg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: The Simpsons
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -327,6 +397,11 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/tidy_tues/water-insecurity/water_tn.svg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Tidy Tuesday: Water Insecurity
+</h5>
+</div>
 </div>
 </a>
 </div>
@@ -336,24 +411,39 @@ window.Quarto = {
 <p class="card-img-top">
 <img loading="lazy" src="./posts/goodreads-genres/thumbnail.svg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Goodreads Genres
+</h5>
+</div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="16" data-listing-date-sort="1732280400000" data-listing-file-modified-sort="1756090833601" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
-<a href="./posts/Chess Federations/chess-feds.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="16" data-listing-date-sort="1732280400000" data-listing-file-modified-sort="1756102266576" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
+<a href="./posts/chess_posts/Chess Federations/chess-feds.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./posts/Chess Federations/chessfeds_thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./posts/chess_posts/Chess Federations/chessfeds_thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Chess Federations
+</h5>
+</div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="17" data-listing-date-sort="1729774800000" data-listing-file-modified-sort="1741331271686" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453">
-<a href="./posts/chess1/2024-10-25-chess1.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="17" data-listing-date-sort="1729774800000" data-listing-file-modified-sort="1756102251018" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="453">
+<a href="./posts/chess_posts/chess1/2024-10-25-chess1.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="./posts/chess1/thumbnail.svg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./posts/chess_posts/chess1/thumbnail.svg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Proportion of Women in Chess
+</h5>
+</div>
 </div>
 </a>
 </div>
