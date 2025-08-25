@@ -6,4 +6,4 @@ image: chessfeds_thumbnail.png
 
 I created this graphic as my final project for the Domestika course "Creative Data Visualization for Narrative Designs" by Federica Fragapane. I created bubble plots and violin plots in R, which I combined and edited for the final visualisation using Inkscape.
 
-![](final copy.png)
+![](final_copy.png)
