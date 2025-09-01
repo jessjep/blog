@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/tidy_tues/billboard/billboard.html",
       "/posts/tidy_tues/munros/munros.html",
       "/posts/tidy_tues/projgutenberg/pgutenberg.html",
       "/posts/tidy_tues/dnd-monsters/monsters.html",
@@ -29,6 +30,7 @@
   {
     "listing": "/tidy_tues.html",
     "items": [
+      "/posts/tidy_tues/billboard/billboard.html",
       "/posts/tidy_tues/munros/munros.html",
       "/posts/tidy_tues/projgutenberg/pgutenberg.html",
       "/posts/tidy_tues/dnd-monsters/monsters.html",
