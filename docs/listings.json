@@ -2,6 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/chess_posts/chess2/chess2.html",
+      "/posts/tidy_tues/henley/henley.html",
       "/posts/tidy_tues/oz_frogs/frogs.html",
       "/posts/tidy_tues/billboard/billboard.html",
       "/posts/tidy_tues/munros/munros.html",
@@ -31,6 +33,7 @@
   {
     "listing": "/tidy_tues.html",
     "items": [
+      "/posts/tidy_tues/henley/henley.html",
       "/posts/tidy_tues/oz_frogs/frogs.html",
       "/posts/tidy_tues/billboard/billboard.html",
       "/posts/tidy_tues/munros/munros.html",
@@ -52,6 +55,7 @@
   {
     "listing": "/chess_posts.html",
     "items": [
+      "/posts/chess_posts/chess2/chess2.html",
       "/posts/chess_posts/tableau-chess/chess_tableau.html",
       "/posts/chess_posts/Chess Federations/chess-feds.html",
       "/posts/chess_posts/chess1/2024-10-25-chess1.html"
