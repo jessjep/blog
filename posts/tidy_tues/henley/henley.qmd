@@ -20,7 +20,7 @@ Things I learned this week:
 
 -   how to parse json data in R
 
--   how to use {ggtext} to add italics to a subtitle
+-   how to use {ggtext} to add italics to a subtitle (which I didn't end up using)
 
 -   how to control the jitter of geom_point using 'position = position_jitter(width = x)'
 
@@ -117,10 +117,13 @@ p <- ggplot(free_access,
   labs(x = NULL, 
        y = "Relative Travel Freedom",
        title = "Passport Power by Region",
-       subtitle = "Shows the difference between the *number of countries a passport-holder can travel to visa-free* and <br> the *number of countries from which people can enter visa-free*.<br><br>Passport holders from countries with high relative travel freedom can travel to many places<br>without a visa, but not many people from other countries can enter without a visa. Conversely,<br>passport holders from countries with low relative travel freedom cannot travel many places<br>without a visa, while passport-holders from many other countries can enter freely.") +
+       subtitle = "Shows how many places passport holders can travel to without a visa – relative to how many types of passports\ncan enter their country without one.") +
   scale_color_paletteer_d("MetBrewer::Austria") +
   theme_minimal() +
   theme(legend.position = "none",
-        plot.subtitle = element_markdown(),
-        plot.title = element_text(face = "bold"))
+        plot.title = element_text(size = 20, face = "bold"),
+        plot.subtitle = element_text(size = 14),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12),
+        plot.margin = margin(20,20,20,20))
 ```
