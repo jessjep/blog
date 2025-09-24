@@ -19,11 +19,13 @@ Contact me at: [jessicamoore.tn\@gmail.com](mailto:jessicamoore.tn@gmail.com)
 :::::: {.g-col-12 .g-col-md-4}
 ::::: card
 :::: {.card-body .d-flex .flex-column}
-<img src="posts/tidy_tues/oz_frogs/frogs.png" alt="Latest post image" class="card-img-top" style="width: 100%; height: 250px; object-fit: cover; overflow: hidden;
-  object-position: top center;"/>
+```{=html}
+<img src="posts/tidy_tues/fide_ratings/fide_ratings.png" alt="Latest post image" class="card-img-top" style="width: 100%; height: 250px; object-fit: cover; overflow: hidden;
+  object-position: top right;"/>
+```
 
 ::: {style="margin-top: auto;"}
-<a href="posts/tidy_tues/oz_frogs/frogs.qmd" class="card-link">Latest post</a>
+<a href="posts/tidy_tues/fide_ratings/fide_ratings.qmd" class="card-link">Latest post</a>
 :::
 ::::
 :::::
@@ -32,8 +34,10 @@ Contact me at: [jessicamoore.tn\@gmail.com](mailto:jessicamoore.tn@gmail.com)
 :::::: {.g-col-12 .g-col-md-4}
 ::::: card
 :::: {.card-body .d-flex .flex-column}
+```{=html}
 <img src="posts/tidy_tues/palmtrees/palms.png" alt="TidyTuesday image" class="card-img-top" style="width: 100%; height: 250px; object-fit: cover;overflow: hidden;
   object-position: top center;"/>
+```
 
 ::: {style="margin-top: auto;"}
 <a href="tidy_tues.qmd" class="card-link">Tidy Tuesday posts</a>
@@ -45,8 +49,10 @@ Contact me at: [jessicamoore.tn\@gmail.com](mailto:jessicamoore.tn@gmail.com)
 :::::: {.g-col-12 .g-col-md-4}
 ::::: card
 :::: {.card-body .d-flex .flex-column}
+```{=html}
 <img src="posts/chess_posts/Chess Federations/final_copy.png" alt="TidyTuesday image" class="card-img-top" style="width: 100%; height: 250px; object-fit: cover;overflow: hidden;
   object-position: top left;"/>
+```
 
 ::: {style="margin-top: auto;"}
 <a href="chess_posts.qmd" class="card-link">Chess posts</a>
