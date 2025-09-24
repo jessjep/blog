@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/tidy_tues/fide_ratings/fide_ratings.html",
       "/posts/tidy_tues/henley/henley.html",
       "/posts/tidy_tues/oz_frogs/frogs.html",
       "/posts/tidy_tues/billboard/billboard.html",
@@ -32,6 +33,7 @@
   {
     "listing": "/tidy_tues.html",
     "items": [
+      "/posts/tidy_tues/fide_ratings/fide_ratings.html",
       "/posts/tidy_tues/henley/henley.html",
       "/posts/tidy_tues/oz_frogs/frogs.html",
       "/posts/tidy_tues/billboard/billboard.html",
