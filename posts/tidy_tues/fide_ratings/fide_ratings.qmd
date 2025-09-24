@@ -10,7 +10,7 @@ tags:
   - tidytuesday
 ---
 
-![](fide_ratings.png)
+![](fide_ratings.png){width="900"}
 
 This week I was curious about the size of rating changes as chess players age. I expected to see that people lose more rating points as they age, but the reality is that rating is most volatile before people turn 20.
 
