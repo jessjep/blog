@@ -8,6 +8,7 @@ execute:
 image: "fide_ratings.png"
 tags: 
   - tidytuesday
+  - chess
 ---
 
 ![](fide_ratings.png){width="900"}
