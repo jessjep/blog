@@ -1,0 +1,15 @@
+{
+  "hash": "419c03e8997146f8e9441640d51f456e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Tidy Tuesday: Cranes\"\ndate: 2025-10-01\nexecute:\n  echo: true\n  warning: false\n  message: false\nimage: \"cranes.png\"\ntags: \n  - tidytuesday\n---\n\n\n\n\n\n![](cranes.png)\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\" code-summary=\"Code\"}\nlibrary(tidyverse)\nlibrary(ggstar)\nlibrary(ggfx)\nlibrary(sysfonts)\nlibrary(showtext)\n\ntuesdata <- tidytuesdayR::tt_load(2025, week = 39)\ncranes <- tuesdata$cranes\n\ntitle <- \"Arrival of the Cranes\"\nsubtitle <- \"to Hornborgasjön in Spring, 2014–2024\"\ncaption <- \"@jessimoore.bsky.social    Source: hornborga.com\"\n\nfont_add(\"playwrite\", regular = \"PlaywriteDEGrund-VariableFont_wght.ttf\")\nft <- \"playwrite\"\nshowtext_auto()\n\ncranes2 <- cranes %>%\n  drop_na(observations) %>%\n  mutate(date2 = as.Date(paste0(\"2025-\", format(date, \"%m-%d\"))),\n         year = year(date)) %>%\n  filter(month(date) < 6,\n         year %in% 2014:2024)\n\np <- ggplot(cranes2,\n            aes(date2, \n                observations,\n                fill = observations)) +\n  with_shadow(geom_star(starshape = 14,\n            color = NA,\n            angle = -10,\n            size = 2.5,\n            alpha = 0.9),\n            colour = \"#698796\",\n            x_offset = 2, \n            y_offset = 2,\n            size = 1) +\n  scale_fill_gradientn(colors = c(\"#D4C3CA\", \"grey90\",\"grey95\", \"white\")) +\n  scale_x_date(limits = as.Date(c(\"2025-03-01\",\n                                  \"2025-05-01\")),\n               breaks = as.Date(c(\"2025-03-01\",\n                                  \"2025-04-01\",\n                                  \"2025-05-01\")),\n               labels = c(\"March 1st\", \n                          \"April 1st\", \n                          \"May 1st\")) +\n  scale_y_continuous(labels = scales::label_comma()) +\n  labs(x = NULL, y = NULL,\n       title = title,\n       subtitle = subtitle,\n       caption = caption) +\n  theme_bw(ink = \"white\", \n          paper = \"#74a9c2\") +\n  theme(legend.position = \"none\",\n        panel.grid = element_blank(),\n        panel.grid.major.x = element_line(color = \"#c1dbe8\", linetype = \"dotted\", linewidth = 0.2),\n        panel.grid.major.y = element_line(color = \"#c1dbe8\", linetype = \"dotted\", linewidth = 0.2),\n        panel.border = element_blank(),\n        axis.ticks = element_blank(),\n        text = element_text(family = ft),\n        axis.text = element_text(size = 12),\n        plot.title = element_text(size = 24, face = \"bold\", hjust = 0),\n        plot.subtitle = element_text(size = 14),\n        plot.caption = element_text(size = 8, color = \"#CAE9F5\", hjust = 0.5, vjust = -2),\n        plot.margin = margin(40,40,20,20))\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

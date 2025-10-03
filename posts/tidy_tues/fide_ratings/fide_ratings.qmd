@@ -104,5 +104,4 @@ plot <- ggplot(fide,
         axis.title = element_text(size = 12),
         plot.background = element_rect(fill = bg),
         panel.background = element_rect(fill = bg))
-
 ```
