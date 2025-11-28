@@ -1,0 +1,15 @@
+{
+  "hash": "45b29fb6100cda2576c600f87d305fae",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Tidy Tuesday: Sherlock\"\ndate: 2025-11-28\nexecute:\n  echo: true\n  warning: false\n  message: false\nimage: \"holmes_doctors.png\"\ntags: \n  - tidytuesday\n---\n\n\n\n![](holmes_doctors.png)\n\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\" code-summary=\"Code\"}\ntuesdata <- tidytuesdayR::tt_load(2025, week = 46)\nholmes <- tuesdata$holmes\n\nlibrary(tidyverse)\nlibrary(tidytext)\n\nholmes_bigrams <- holmes %>%\n  unnest_tokens(bigram, text, token = \"ngrams\", n = 2) %>%\n  filter(!is.na(bigram))\n\nbigrams_separated <- holmes_bigrams %>%\n  separate(bigram, c(\"word1\", \"word2\"), sep = \" \")\n\nbigrams_filtered <- bigrams_separated %>%\n  filter(!word1 %in% stop_words$word) %>%\n  filter(!word2 %in% stop_words$word)\n\n\ndoctors <- bigrams_filtered %>%\n  filter(word1 == \"dr\") %>%\n  mutate(word2 = str_to_title(\n    str_remove(word2, \"'s\\\\b\")\n    )) %>%\n  rename(Book = book) %>%\n  select(Book, word2) %>%\n  group_by(Book) %>%\n  distinct(word2) %>%\n  filter(word2 != \"Watson\") %>%\n  summarize(Doctors = paste(unique(word2), collapse = \", \")) %>%\n  ungroup() %>%\n  arrange(desc(nchar(Doctors)))\n\nlibrary(gt)\n\ntable <- doctors %>% \n  gt() %>%\n  tab_header(title = md(\"Doctors of Sherlock Holmes Novels\"),\n             subtitle = md(\"These 15 Holmes novels feature doctors other than Watson.\")) %>%\n  tab_footnote(\n    footnote = \"Source: {sherlock} package. Created by jessimoore@bsky.social\"\n  ) %>%\n  opt_stylize(style = 3, color = 'green')\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

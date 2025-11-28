@@ -1,0 +1,44 @@
+tuesdata <- tidytuesdayR::tt_load(2025, week = 46)
+holmes <- tuesdata$holmes
+
+library(tidyverse)
+library(tidytext)
+
+holmes_bigrams <- holmes %>%
+  unnest_tokens(bigram, text, token = "ngrams", n = 2) %>%
+  filter(!is.na(bigram))
+
+bigrams_separated <- holmes_bigrams %>%
+  separate(bigram, c("word1", "word2"), sep = " ")
+
+bigrams_filtered <- bigrams_separated %>%
+  filter(!word1 %in% stop_words$word) %>%
+  filter(!word2 %in% stop_words$word)
+
+doctors <- bigrams_filtered %>%
+  filter(word1 == "dr") %>%
+  mutate(word2 = str_to_title(
+    str_remove(word2, "'s\\b")
+    )) %>%
+  rename(Book = book) %>%
+  select(Book, word2) %>%
+  group_by(Book) %>%
+  distinct(word2) %>%
+  filter(word2 != "Watson") %>%
+  summarize(Doctors = paste(unique(word2), collapse = ", ")) %>%
+  ungroup() %>%
+  arrange(desc(nchar(Doctors)))
+
+library(gt)
+
+table <- doctors %>% 
+  gt() %>%
+  tab_header(title = md("Doctors of Sherlock Holmes Novels"),
+             subtitle = md("These 15 Holmes novels feature doctors other than Watson.")) %>%
+  tab_footnote(
+    footnote = "Source: {sherlock} package. Created by jessimoore@bsky.social"
+  ) %>%
+  opt_stylize(style = 3, color = 'green')
+
+table
+         

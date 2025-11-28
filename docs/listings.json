@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/tidy_tues/sherlock/sherlock.html",
       "/posts/tidy_tues/cranes/cranes.html",
       "/posts/tidy_tues/fide_ratings/fide_ratings.html",
       "/posts/tidy_tues/henley/henley.html",
@@ -34,6 +35,7 @@
   {
     "listing": "/tidy_tues.html",
     "items": [
+      "/posts/tidy_tues/sherlock/sherlock.html",
       "/posts/tidy_tues/cranes/cranes.html",
       "/posts/tidy_tues/fide_ratings/fide_ratings.html",
       "/posts/tidy_tues/henley/henley.html",
